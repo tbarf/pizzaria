@@ -1,0 +1,277 @@
+/* NOTE:
+ * Grid layout stuff starts at line 138.
+ * The stuff before is just boring old CSS to make content look not crappy.
+ */
+
+/*--------------------------------------------------------------
+CSS Reset
+--------------------------------------------------------------*/
+html {
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust:     100%;
+}
+
+body {
+    margin: 0;
+}
+
+img {
+    display: block;
+    border: 0;
+    width: 100%;
+    height: auto;
+}
+
+
+/*--------------------------------------------------------------
+Accessibility
+--------------------------------------------------------------*/
+/* Text meant only for screen readers */
+.screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+.screen-reader-text:hover,
+.screen-reader-text:active,
+.screen-reader-text:focus {
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    clip: auto !important;
+    color: #21759b;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000; /* Above WP toolbar */
+}
+
+
+/*--------------------------------------------------------------
+Typography
+--------------------------------------------------------------*/
+body,
+footer,
+button,
+input,
+select,
+textarea {
+  display: grid;
+  color: #000;
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 1em 0;
+    line-height: 1.3;
+    text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+}
+
+h4 {
+
+font-size: 3.3125em; /* 53px/16px  */
+  font-weight: normal;
+  line-height: 1.1;
+  margin: 0 0 .5em; /* 0 0 26px */
+}
+
+p {
+    margin: 0;
+    padding: 1em 0;
+    color: rgba(0, 0, 0, 1);
+  text-transform: uppercase;
+  font-weight: normal;
+  line-height: 1.3;
+  text-shadow: 0 1px 1px rgba(0,0,0,.8);
+}
+
+input[type=text], textarea {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #E8B90C;
+}
+
+input[type=text]:focus, textarea:focus {
+  box-shadow: 0 0 5px rgba(49, 45, 79, 1);
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid rgba(49, 45, 79, 1);
+}
+
+/*--------------------------------------------------------------
+General styles
+--------------------------------------------------------------*/
+.site {
+    background: #ededed;
+    min-height: 100vh;
+}
+
+.masthead,
+.main-content,
+.sidebar,
+.twin,
+.footer {
+    padding: 1em 2em;
+}
+
+.main-content {
+    background: white;
+}
+.masthead {
+    background: #8B1E3F;
+    color: white;
+}
+
+.sidebar {
+    background: #89BD9E;
+}
+
+.twin {
+    background: #DB4C40;
+}
+
+.twin:last-of-type {
+    background: #F6C5AF;
+    text-align: center;
+}
+
+.colophon {
+    padding: 2em;
+    background: #3C153B;
+    color: white;
+}
+
+.colophon a {
+    color: white;
+}
+
+.colophon a:hover,
+.colophon a:focus {
+    border-bottom: 1px solid white;
+}
+.CV {
+  color: #000;
+}
+#addy {
+
+margin-bottom: 100px;
+
+
+
+}
+#logoImg
+{
+  max-width: 100%;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+img { display: block; width: 90%; }
+
+  -webkit-filter: drop-shadow(16px 16px 10px rgba(0,0,0,0.9));
+  filter: drop-shadow(16px 16px 10px rgba(0,0,0,0.9));
+
+}
+/*--------------------------------------------------------------
+If no grid support, limit width to 50em and center align
+--------------------------------------------------------------*/
+@supports not (display: grid) {
+    .site {
+        max-width: 50em;
+        margin: 0 auto;
+    }
+}
+
+/*--------------------------------------------------------------
+CSS Grid layout for wider screens, when browser supports grid:
+--------------------------------------------------------------*/
+
+@media screen and (min-width: 600px) {
+    @supports (display: grid) {
+
+        .site {
+            display: grid;
+            grid-template-columns: 1fr repeat(6, minmax(auto, 10em)) 1fr;
+            grid-template-rows: minmax(1em, auto) 1fr auto minmax(1em, auto);
+        }
+
+        .masthead,
+        .colophon {
+            grid-column: span 8;
+        }
+
+        .main-content {
+            grid-column: 2/6;
+        }
+
+        .sidebar {
+            grid-column: 6/8;
+        }
+
+        .twin {
+            grid-column: 2/5;
+            grid-row: 3/4;
+        }
+
+        .twin:last-of-type {
+            grid-column: 5/8;
+        }
+
+    }
+}
+
+
+/* Pseudo-classes ------------------ */
+
+a:link {
+  color: rgb(49, 45, 79);
+  text-decoration: none;
+}
+
+a:visited {
+  color: #0DFF51;
+}
+
+a:hover {
+  color: rgba(48, 36, 37, .4);
+}
+
+a:active {
+  color: lightcoral;
+}
+
