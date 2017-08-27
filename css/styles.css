@@ -1,7 +1,3 @@
-/* NOTE:
- * Grid layout stuff starts at line 138.
- * The stuff before is just boring old CSS to make content look not crappy.
- */
 
 /*--------------------------------------------------------------
 CSS Reset
@@ -21,42 +17,8 @@ img {
     border: 0;
     width: 100%;
     height: auto;
+
 }
-
-
-/*--------------------------------------------------------------
-Accessibility
---------------------------------------------------------------*/
-/* Text meant only for screen readers */
-.screen-reader-text {
-    clip: rect(1px, 1px, 1px, 1px);
-    position: absolute !important;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-}
-
-.screen-reader-text:hover,
-.screen-reader-text:active,
-.screen-reader-text:focus {
-    background-color: #f1f1f1;
-    border-radius: 3px;
-    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
-    clip: auto !important;
-    color: #21759b;
-    display: block;
-    font-size: 14px;
-    font-weight: bold;
-    height: auto;
-    left: 5px;
-    line-height: normal;
-    padding: 15px 23px 14px;
-    text-decoration: none;
-    top: 5px;
-    width: auto;
-    z-index: 100000; /* Above WP toolbar */
-}
-
 
 /*--------------------------------------------------------------
 Typography
@@ -132,6 +94,7 @@ input[type=text]:focus, textarea:focus {
 /*--------------------------------------------------------------
 General styles
 --------------------------------------------------------------*/
+
 .site {
     background: #ededed;
     min-height: 100vh;
@@ -201,10 +164,10 @@ margin-bottom: 100px;
         transform: scaleX(-1);
         filter: FlipH;
         -ms-filter: "FlipH";
+        box-shadow: 10px 10px 5px #000;
 img { display: block; width: 90%; }
 
-  -webkit-filter: drop-shadow(16px 16px 10px rgba(0,0,0,0.9));
-  filter: drop-shadow(16px 16px 10px rgba(0,0,0,0.9));
+
 
 }
 /*--------------------------------------------------------------
@@ -232,7 +195,7 @@ CSS Grid layout for wider screens, when browser supports grid:
 
         .masthead,
         .colophon {
-            grid-column: span 8;
+            grid-column: span 7;
         }
 
         .main-content {
@@ -244,8 +207,8 @@ CSS Grid layout for wider screens, when browser supports grid:
         }
 
         .twin {
-            grid-column: 2/5;
-            grid-row: 3/4;
+            grid-column: 1/5;
+            grid-row: 2/4;
         }
 
         .twin:last-of-type {
